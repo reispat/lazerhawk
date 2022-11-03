@@ -98,7 +98,7 @@ brms_SummaryTable <- function(model,
   if (astrology && hype)  {
     partables_formatted$Notable = hypetests$hypothesis$Star
   } else if (astrology) {
-    partables_formatted$Notable =  apply(sign(fe[,c('Q2.5', 'Q97.5')]),
+    partables_formatted$Notable =  apply(sign(fe[,c('Q5.5', 'Q94.5')]),
                                          1,
                                          function(interval) ifelse(diff(interval)==0, '*', ''))
   }
