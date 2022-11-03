@@ -71,11 +71,11 @@ brms_SummaryTable <- function(model,
 
   if (!inherits(model, "brmsfit")) stop('Model is not a brmsfit class object.')
 
-  fe = brms::fixef(model)
+  fe = brms::fixef(model, probs=c(0.055, 0.945))
   partables_formatted = data.frame(Covariate=rownames(fe),
                                    do.call(format, list(x=round(fe, round), unlist(formatOptions))))
   rownames(partables_formatted) = NULL
-  colnames(partables_formatted)[4:5] = c('l-95% CI', 'u-95% CI')
+  colnames(partables_formatted)[4:5] = c('l-89% CI', 'u-89% CI')
 
   if(!astrology & !hype & !panderize) {
     return(partables_formatted)
