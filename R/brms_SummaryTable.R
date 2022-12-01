@@ -90,7 +90,7 @@ brms_SummaryTable <- function(model,
     pp = hypetests$hypothesis$Post.Prob                  
     partables_formatted$pvals = pp*100
     partables_formatted$pvals[is.infinite(ER)] = 100
-    if (is.infinite(ER)) {              
+    if (is.infinite(ER[2])) {              
       partables_formatted$pvals = do.call(format, list(x=round(partables_formatted$pvals, 0), formatOptions[[1]]))
      } else {
       partables_formatted$pvals = do.call(format, list(x=round(partables_formatted$pvals, round), formatOptions[[1]]))
