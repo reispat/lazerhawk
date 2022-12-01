@@ -87,8 +87,8 @@ brms_SummaryTable <- function(model,
       ifelse(sign>0, paste0(coefname, ' > 0'), paste0(coefname, ' > 0')), rownames(fe), sign(fe[,'Estimate']))
     hypetests = brms::hypothesis(x=model, testnams, seed=seed)
     ER = hypetests$hypothesis$Evid.Ratio
-    partables_formatted$pvals = ER/(ER+1)*100
-    partables_formatted$pvals[is.infinite(ER)] = 1
+    pp = hypetests$hypothesis$Post.Prob                  
+    partables_formatted$pvals = pp*100
     partables_formatted$pvals = do.call(format, list(x=round(partables_formatted$pvals, round), formatOptions[[1]]))
     colnames(partables_formatted)[ncol(partables_formatted)] = 'B > 0 (%)'
     partables_formatted[,'Evidence Ratio'] = do.call(format, list(x=round(ER, round), formatOptions[[1]]))
