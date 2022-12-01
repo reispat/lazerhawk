@@ -84,7 +84,7 @@ brms_SummaryTable <- function(model,
   # conduct hypothesis tests
   if (hype) {
     testnams = mapply(function(coefname, sign)
-      ifelse(sign>0, paste0(coefname, ' > 0')), rownames(fe), sign(fe[,'Estimate']))
+      ifelse(sign>0, paste0(coefname, ' > 0'), paste0(coefname, ' > 0')), rownames(fe), sign(fe[,'Estimate']))
     hypetests = brms::hypothesis(x=model, testnams, seed=seed)
     ER = hypetests$hypothesis$Evid.Ratio
     partables_formatted$pvals = ER/(ER+1)
