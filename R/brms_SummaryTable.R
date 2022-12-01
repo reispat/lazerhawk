@@ -90,7 +90,7 @@ brms_SummaryTable <- function(model,
     pp = hypetests$hypothesis$Post.Prob                  
     partables_formatted$pvals = pp*100
     partables_formatted$pvals[is.infinite(ER)] = 100
-    ifelse(pp == 100, 
+    ifelse(partables_formatted$pvals == 100, 
            partables_formatted$pvals <- do.call(format, list(x=round(partables_formatted$pvals, 0), formatOptions[[1]])), 
            partables_formatted$pvals <- do.call(format, list(x=round(partables_formatted$pvals, round), formatOptions[[1]])))                  
     colnames(partables_formatted)[ncol(partables_formatted)] = 'B > 0 (%)'
